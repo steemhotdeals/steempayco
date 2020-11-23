@@ -49,11 +49,11 @@ class PayInfo extends React.Component {
             <table className="pay-summary mb2">
                 <tbody>
                     <tr>
-                        <td className="pay-summary-left">수취인</td>
+                        <td className="pay-summary-left">Reciever</td>
                         <td className="pay-summary-right">{this.props.metadata.user}</td>
                     </tr>
                     <tr>
-                        <td className="pay-summary-left">금액</td>
+                        <td className="pay-summary-left">Price</td>
                         <td className="pay-summary-right">{this.props.metadata.amount} {this.props.metadata.currency}
                             {this.props.metadata.currency == "KRW" && (
                                 <span>
@@ -62,7 +62,7 @@ class PayInfo extends React.Component {
                         </td>
                     </tr>
                     <tr>
-                        <td className="pay-summary-left">환율</td>
+                        <td className="pay-summary-left">Exchange Rate</td>
                         <td className="pay-summary-right">1 STEEM = {this.props.metadata.rate} KRW</td>
                     </tr>
                     <tr>
@@ -87,7 +87,7 @@ class Sender extends React.Component {
     payViaSteemConnect() {
         var info = this.state.payInfo;
         var amount = (info.currency === "KRW" ? (info.amount / info.rate) : info.amount).toFixed(3);
-        var message = "[SteemPay] " + info.message + (info.currency === "KRW" && ", " + info.amount + " KRW (환율: " + info.rate + ") ");
+        var message = "[SteemPay] " + info.message + (info.currency === "KRW" && ", " + info.amount + " KRW (Exchange Rate: " + info.rate + ") ");
         console.log(message);
         
         if (steem_keychain) {
@@ -110,13 +110,13 @@ class Sender extends React.Component {
     render() {
         return (
             <div className="receiver-panel">
-                <div className="page-title">스팀달러 송금</div>
+                <div className="page-title">Steem pay with keychain</div>
                 <PayInfo metadata={this.state.payInfo} />
                 <button
                         type="button"
                         className="btn btn-secondary btn-lg btn-block mb-2" data-dismiss="modal"
                         onClick={() => this.payViaSteemConnect()}
-                        >Steem Keychain 송금
+                        >Send Steem
                 </button>
             </div>
         )
@@ -160,7 +160,7 @@ class PayDetail extends React.Component {
                     <button
                         type="button"
                         className="btn btn-secondary btn-lg btn-block mb-2" data-dismiss="modal"
-                        >닫기</button>
+                        >Close</button>
                 </div>);
     }
 }
@@ -202,16 +202,16 @@ class Receiver extends React.Component {
 
     showQR() {
         if (!this.receiver.value) {
-            alert("계정명을 입력하세요.");
+            alert("Please enter account name.");
             return;
         }
         if (!this.amount.value) {
-            alert("금액을 입력하세요.");
+            alert("Please enter price.");
             return;
         }
         
         if (this.message.value && this.message.value.length > 20) {
-            alert("메시지는 20 글자 이내로 입력하세요.");
+            alert("Please enter a message within 20 characters.");
             return;
         }
         var msg = {
@@ -232,10 +232,10 @@ class Receiver extends React.Component {
         return (
             <div className="receiver-panel">
                 <div className="page-title">
-                    스팀달러 청구
+                    Steem pay with keychain
                 </div>
                 {this.state.price && (
-                <div className="price-feed">Upbit 24 시간 평균시세: 1 STEEM = {this.state.price} KRW ({this.state.lastFeedUpdate})</div>
+                <div className="price-feed">Upbit 24 Hour Average Price: 1 STEEM = {this.state.price} KRW ({this.state.lastFeedUpdate})</div>
                 )}
                 <div className="input-group input-group-lg mb-2">
                     <div className="input-group-prepend">
@@ -244,35 +244,34 @@ class Receiver extends React.Component {
                     <input type="text"
                         className="form-control"
                         ref={(input) => { this.receiver = input; }}
-                        placeholder="받는 사람의 Steem 계정"/>
+                        placeholder="Recipient's Steem Account"/>
                 </div>
                 <div className="input-group input-group-lg mb-2">
                     <div className="input-group-prepend">
-                        <label className="input-group-text">청구금액</label>
+                        <label className="input-group-text">Price</label>
                     </div>
                     <input type="text"  style={{width:200}}
                         className="form-control"
                         ref={(input) => { this.amount = input; }}
-                        placeholder="청구 금액"/>
+                        placeholder="Price"/>
                     <select className="custom-select form-control"
                         ref={(input) => { this.currency = input; }}>
-                        <option value='KRW'>원</option>
-                        <option value='EUR'>EUR</option>
+                        <option value='KRW'>원(Won)</option>
                     </select>
                 </div>
                 <div className="input-group input-group-lg mb-2">
                     <div className="input-group-prepend">
-                        <label className="input-group-text">메시지</label>
+                        <label className="input-group-text">Message</label>
                     </div>
                     <input type="text"
                         className="form-control"
                         ref={(input) => { this.message = input; }}
-                        placeholder="이 메시지는 송금자에게 보여집니다."/>
+                        placeholder="This message is shown to the sender."/>
                 </div>
                 <button
                     type="button"
                     className="btn btn-secondary btn-lg btn-block mb-2"
-                    onClick={() => this.showQR()}>완료
+                    onClick={() => this.showQR()}>Complete
                 </button>
                 {this.state.qrData && (
                     <img src={this.state.qrData}/>
