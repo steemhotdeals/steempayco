@@ -22,7 +22,7 @@ const InvoiceDetailView = ({ invoice, rate }) => {
                     <Table.Cell textAlign='right'>
                         <span style={{ fontSize: '22pt' }}>{Utils.currencyFormat(invoice.amount, invoice.currency)}</span>
                         {rate &&
-                            <p style={{ fontSize: '16pt' }}>{Utils.numberWithCommas((invoice.amount / rate.price).toFixed(3))} SBD</p>}
+                            <p style={{ fontSize: '16pt' }}>{Utils.numberWithCommas((invoice.amount / rate.price).toFixed(3))} STEEM</p>}
                     </Table.Cell>
                 </Table.Row>
 
@@ -53,7 +53,7 @@ const InvoiceDetailView = ({ invoice, rate }) => {
                     <Table.Row verticalAlign='top'>
                         <Table.Cell active style={leftStyle}>Exchange Rate</Table.Cell>
                         <Table.Cell textAlign='right'>
-                            <span style={{ fontSize: '14pt' }}>1 SBD = {rate.price.toFixed(3)} {invoice.currency}</span><br />
+                            <span style={{ fontSize: '14pt' }}>1 STEEM = {rate.price.toFixed(3)} {invoice.currency}</span><br />
                             {rate.source}<br />
                             {rate.detail}<br />
                         </Table.Cell>
