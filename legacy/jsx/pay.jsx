@@ -89,7 +89,7 @@ class Sender extends React.Component {
         var amount = (info.currency === "KRW" ? (info.amount / info.rate) : info.amount).toFixed(3) + " SBD";
         var message = "[SteemPay] " + info.message + (info.currency === "KRW" && ", " + info.amount + " KRW (환율: " + info.rate + ") ");
         console.log(message);
-        var scUrl = "https://steemconnect.com/sign/transfer?to=" + info.user
+        var scUrl = "https://steemlogin.com/sign/transfer?to=" + info.user
                 + "&amount=" + encodeURIComponent(amount)
                 + "&memo=" + encodeURIComponent(message);
         document.location.href = scUrl;
