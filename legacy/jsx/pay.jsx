@@ -55,7 +55,7 @@ class PayInfo extends React.Component {
                     <tr>
                         <td className="pay-summary-left">금액</td>
                         <td className="pay-summary-right">{this.props.metadata.amount} {this.props.metadata.currency}
-                            {this.props.metadata.currency == "KRW" && (
+                            {this.props.metadata.currency == "EUR" && (
                                 <span>
                             {"(" + (this.props.metadata.amount / this.props.metadata.rate).toFixed(3) + " STEEM)"}</span>
                             )}
@@ -63,7 +63,7 @@ class PayInfo extends React.Component {
                     </tr>
                     <tr>
                         <td className="pay-summary-left">환율</td>
-                        <td className="pay-summary-right">1 STEEM = {this.props.metadata.rate} KRW</td>
+                        <td className="pay-summary-right">1 STEEM = {this.props.metadata.rate} EUR</td>
                     </tr>
                     <tr>
                         <td className="pay-summary-left">메시지</td>
@@ -86,8 +86,8 @@ class Sender extends React.Component {
     
     payViaSteemConnect() {
         var info = this.state.payInfo;
-        var amount = (info.currency === "KRW" ? (info.amount / info.rate) : info.amount).toFixed(3);
-        var message = "[SteemPay] " + info.message + (info.currency === "KRW" && ", " + info.amount + " KRW (환율: " + info.rate + ") ");
+        var amount = (info.currency === "EUR" ? (info.amount / info.rate) : info.amount).toFixed(3);
+        var message = "[SteemPay] " + info.message + (info.currency === "EUR" && ", " + info.amount + " EUR (환율: " + info.rate + ") ");
         console.log(message);
         
         if (steem_keychain) {
@@ -257,7 +257,7 @@ class Receiver extends React.Component {
                     <select className="custom-select form-control"
                         ref={(input) => { this.currency = input; }}>
                         <option value='KRW'>원</option>
-                        <option value='STEEM'>STEEM</option>
+                        <option value='EUR'>EUR</option>
                     </select>
                 </div>
                 <div className="input-group input-group-lg mb-2">
