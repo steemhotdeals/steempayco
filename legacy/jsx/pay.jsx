@@ -116,7 +116,7 @@ class Sender extends React.Component {
                         type="button"
                         className="btn btn-secondary btn-lg btn-block mb-2" data-dismiss="modal"
                         onClick={() => this.payViaSteemConnect()}
-                        >Steem Connect 송금
+                        >Steem Keychain 송금
                 </button>
             </div>
         )
