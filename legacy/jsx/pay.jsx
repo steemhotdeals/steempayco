@@ -90,8 +90,8 @@ class Sender extends React.Component {
         var message = "[SteemPay] " + info.message + (info.currency === "KRW" && ", " + info.amount + " KRW (환율: " + info.rate + ") ");
         console.log(message);
         
-        if (hive_keychain) {
-            hive_keychain.requestTransfer('ayogom', 'ayogom', amount, message, 'HIVE', function(err, response) {
+        if (steem_keychain) {
+            steem_keychain.requestTransfer('ayogom', 'ayogom', amount, message, 'STEEM', function(err, response) {
                 console.log(err, response);
                 if (err.error == null) {
                 } else {          
