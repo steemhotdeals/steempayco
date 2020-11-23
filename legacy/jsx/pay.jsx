@@ -91,7 +91,7 @@ class Sender extends React.Component {
         console.log(message);
         
         if (hive_keychain) {
-            hive_keychain.requestTransfer('ayogom', 'ayogom', '1.000', '123', 'STEEM', function(err, response) {
+            hive_keychain.requestTransfer('ayogom', 'ayogom', '1.000', '123', 'HIVE', function(err, response) {
                 console.log(err, response);
                 if (err.error == null) {
                 } else {          
