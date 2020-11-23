@@ -22,16 +22,16 @@ class PaymentView extends Component {
     payViaSteemConnect = (rate) => {
         let info = this.state.invoice;
         let amount = info.amount + " " + info.currency;
-        let amountSBD = (info.amount / rate.price).toFixed(3) + " SBD";
+        let amountSTEEM = (info.amount / rate.price).toFixed(3) + " STEEM";
         let message = "";
         if (info.type === 'exchange') {
             message = info.receiverDetail.wallet;
         } else {
-            message = "[SteemPay] " + info.memo + " | " + amount + " | " + amountSBD;
+            message = "[SteemPay] " + info.memo + " | " + amount + " | " + amountSTEEM;
         }
         console.log(message);
         let scUrl = "https://steemlogin.com/sign/transfer?to=" + info.receiver
-                + "&amount=" + encodeURIComponent(amountSBD)
+                + "&amount=" + encodeURIComponent(amountSTEEM)
                 + "&memo=" + encodeURIComponent(message);
         document.location.href = scUrl;
     }
