@@ -94,20 +94,20 @@ class Sender extends React.Component {
             hive_keychain.requestTransfer('ayogom', 'ayogom', 1, '123', 'STEEM', function(err, response) {
                 console.log(err, response);
                 if (err.error == null) {
-                    return resolve(err.message);
+                    
                 } else {
-                    return reject(err.message);
+                   
                 }
             });
         } else {
-            return reject('Hive Keychain must be installed.');
+            
         }
-    /*
+        /*
 		var scUrl = "https://steemconnect.com/sign/transfer?to=" + info.user
                 + "&amount=" + encodeURIComponent(amount)
                 + "&memo=" + encodeURIComponent(message);
-	*/
-        document.location.href = scUrl;
+       document.location.href = scUrl;
+       */   
     }
 
     render() {
