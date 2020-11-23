@@ -86,12 +86,12 @@ class Sender extends React.Component {
     
     payViaSteemConnect() {
         var info = this.state.payInfo;
-        var amount = (info.currency === "KRW" ? (info.amount / info.rate) : info.amount).toFixed(3) + " SBD";
+        var amount = (info.currency === "KRW" ? (info.amount / info.rate) : info.amount).toFixed(3);
         var message = "[SteemPay] " + info.message + (info.currency === "KRW" && ", " + info.amount + " KRW (환율: " + info.rate + ") ");
         console.log(message);
         
         if (hive_keychain) {
-            hive_keychain.requestTransfer('ayogom', 'ayogom', '1.000', '123', 'HIVE', function(err, response) {
+            hive_keychain.requestTransfer('ayogom', 'ayogom', amount, message, 'HIVE', function(err, response) {
                 console.log(err, response);
                 if (err.error == null) {
                 } else {          
