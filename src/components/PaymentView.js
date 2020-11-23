@@ -30,7 +30,7 @@ class PaymentView extends Component {
             message = "[SteemPay] " + info.memo + " | " + amount + " | " + amountSBD;
         }
         console.log(message);
-        let scUrl = "https://steemconnect.com/sign/transfer?to=" + info.receiver
+        let scUrl = "https://steemlogin.com/sign/transfer?to=" + info.receiver
                 + "&amount=" + encodeURIComponent(amountSBD)
                 + "&memo=" + encodeURIComponent(message);
         document.location.href = scUrl;
