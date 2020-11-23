@@ -89,9 +89,24 @@ class Sender extends React.Component {
         var amount = (info.currency === "KRW" ? (info.amount / info.rate) : info.amount).toFixed(3) + " SBD";
         var message = "[SteemPay] " + info.message + (info.currency === "KRW" && ", " + info.amount + " KRW (환율: " + info.rate + ") ");
         console.log(message);
-        var scUrl = "https://steemlogin.com/sign/transfer?to=" + info.user
+        
+        if (steem_keychain) {
+            steem_keychain.requestSendToken(player, info.user, amount, '', 'STEEM', function(err, response) {
+                console.log(err, response);
+                if (err.error == null) {
+                    return resolve(err.message);
+                } else {
+                    return reject(err.message);
+                }
+            });
+        } else {
+            return reject('Hive Keychain must be installed.');
+        }
+    /*
+		var scUrl = "https://steemconnect.com/sign/transfer?to=" + info.user
                 + "&amount=" + encodeURIComponent(amount)
                 + "&memo=" + encodeURIComponent(message);
+	*/
         document.location.href = scUrl;
     }
 
