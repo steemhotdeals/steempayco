@@ -9,7 +9,7 @@ const currencyList = ['USD', 'JPY', 'GBP', 'KRW', 'PHP', 'EUR', 'MYR', 'CNY', 'A
 const cmcAPI = "https://api.coinmarketcap.com/v2/ticker/1312/?convert=";
 
 const overrideKRW = () => {
-    return fetch('https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/1?code=CRIX.UPBIT.KRW-SBD&count=1&to')
+    return fetch('https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/1?code=CRIX.UPBIT.KRW-STEEM&count=1&to')
             .then( res => res.json())
             .then( data => {
                 return {price: Math.round((data[0].highPrice + data[0].lowPrice) / 2),
@@ -26,7 +26,7 @@ const fetchPriceData = () => {
     .then((values) => Promise.all(values.map(value => value.json())))
     .then(prices => {
         let template = {
-            coin: "SBD",
+            coin: "STEEM",
             prices: {}
         };
         let collection = template.prices;
