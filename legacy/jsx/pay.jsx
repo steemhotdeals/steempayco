@@ -57,13 +57,13 @@ class PayInfo extends React.Component {
                         <td className="pay-summary-right">{this.props.metadata.amount} {this.props.metadata.currency}
                             {this.props.metadata.currency == "KRW" && (
                                 <span>
-                            {"(" + (this.props.metadata.amount / this.props.metadata.rate).toFixed(3) + " SBD)"}</span>
+                            {"(" + (this.props.metadata.amount / this.props.metadata.rate).toFixed(3) + " STEEM)"}</span>
                             )}
                         </td>
                     </tr>
                     <tr>
                         <td className="pay-summary-left">환율</td>
-                        <td className="pay-summary-right">1 SBD = {this.props.metadata.rate} KRW</td>
+                        <td className="pay-summary-right">1 STEEM = {this.props.metadata.rate} KRW</td>
                     </tr>
                     <tr>
                         <td className="pay-summary-left">메시지</td>
@@ -125,7 +125,7 @@ class Sender extends React.Component {
 
 // Start reading metadata
 var upbeatPriceFeed = (callback) => {
-    fetch("https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/60?code=CRIX.UPBIT.KRW-SBD&count=12&to")
+    fetch("https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/60?code=CRIX.UPBIT.KRW-STEEM&count=12&to")
     .then(res => res.json())
     .then(
         (result) => {
@@ -184,7 +184,7 @@ class Receiver extends React.Component {
     }
 
     upbeatPriceFeed() {
-        fetch("https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/60?code=CRIX.UPBIT.KRW-SBD&count=24&to")
+        fetch("https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/60?code=CRIX.UPBIT.KRW-STEEM&count=24&to")
         .then(res => res.json())
         .then(
             (result) => {
@@ -235,7 +235,7 @@ class Receiver extends React.Component {
                     스팀달러 청구
                 </div>
                 {this.state.price && (
-                <div className="price-feed">Upbit 24 시간 평균시세: 1 SBD = {this.state.price} KRW ({this.state.lastFeedUpdate})</div>
+                <div className="price-feed">Upbit 24 시간 평균시세: 1 STEEM = {this.state.price} KRW ({this.state.lastFeedUpdate})</div>
                 )}
                 <div className="input-group input-group-lg mb-2">
                     <div className="input-group-prepend">
@@ -257,7 +257,7 @@ class Receiver extends React.Component {
                     <select className="custom-select form-control"
                         ref={(input) => { this.currency = input; }}>
                         <option value='KRW'>원</option>
-                        <option value='SBD'>SBD</option>
+                        <option value='STEEM'>STEEM</option>
                     </select>
                 </div>
                 <div className="input-group input-group-lg mb-2">
