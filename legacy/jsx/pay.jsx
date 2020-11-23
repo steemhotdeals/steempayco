@@ -239,7 +239,7 @@ class Receiver extends React.Component {
                 )}
                 <div className="input-group input-group-lg mb-2">
                     <div className="input-group-prepend">
-                        <label className="input-group-text" for="inputGroupSelect01">수신계정</label>
+                        <label className="input-group-text" for="inputGroupSelect01">Receiving account</label>
                     </div>
                     <input type="text"
                         className="form-control"
