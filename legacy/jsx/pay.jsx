@@ -129,8 +129,8 @@ var upbeatPriceFeed = (callback) => {
   //  .then(res => res.json())
     .then(
         (result) => {
-	    console.log(result[1])
-            callback(result[1]);
+	    console.log(result)
+            callback(result);
         },
         (error) => {
             alert("Critical Error! Please retry later." + error)
@@ -188,8 +188,8 @@ class Receiver extends React.Component {
 //        .then(res => res.json())
         .then(
         (result) => {
-	 	console.log(result[0])
-            	callback(result[0]);
+	 	console.log(result)
+            	callback(result);
                 var date = new Date();
                 this.setState({price: Math.round(average), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
             },
