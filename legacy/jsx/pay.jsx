@@ -187,9 +187,9 @@ class Receiver extends React.Component {
         fetch("https://api.coingecko.com/api/v3/simple/price?ids=steem&vs_currencies=EUR")
         .then(res => res.json())
         .then(
-            (result) => {
-		console.log(result)
-                var average = 0);
+        (result) => {
+	 	console.log(result)
+            	callback(0);
                 var date = new Date();
                 this.setState({price: Math.round(average), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
             },
