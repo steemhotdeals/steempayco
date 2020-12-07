@@ -130,8 +130,7 @@ var upbeatPriceFeed = (callback) => {
     .then(
         (result) => {
 	    console.log(result)
-            var average = 0);
-            callback(average);
+            callback(0);
         },
         (error) => {
             alert("Critical Error! Please retry later." + error)
