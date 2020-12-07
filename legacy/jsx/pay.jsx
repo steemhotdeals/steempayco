@@ -125,11 +125,11 @@ class Sender extends React.Component {
 
 // Start reading metadata
 var upbeatPriceFeed = (callback) => {
-    fetch("https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/60?code=CRIX.UPBIT.KRW-STEEM&count=12&to")
+    fetch("https://api.coingecko.com/api/v3/simple/price?ids=steem&vs_currencies=EUR")
     .then(res => res.json())
     .then(
         (result) => {
-            var average = result.map((hr) => hr.highPrice).reduce((avg,e,i,arr)=>avg+e/arr.length,0);
+            var average = result.map((hr) => hr.eur).reduce((avg,e,i,arr)=>avg+e/arr.length,0);
             callback(average);
         },
         (error) => {
@@ -184,11 +184,11 @@ class Receiver extends React.Component {
     }
 
     upbeatPriceFeed() {
-        fetch("https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/60?code=CRIX.UPBIT.KRW-STEEM&count=24&to")
+        fetch("https://api.coingecko.com/api/v3/simple/price?ids=steem&vs_currencies=EUR")
         .then(res => res.json())
         .then(
             (result) => {
-                var average = result.map((hr) => hr.highPrice).reduce((avg,e,i,arr)=>avg+e/arr.length,0);
+                var average = result.map((hr) => hr.eur).reduce((avg,e,i,arr)=>avg+e/arr.length,0);
                 var date = new Date();
                 this.setState({price: Math.round(average), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
             },
