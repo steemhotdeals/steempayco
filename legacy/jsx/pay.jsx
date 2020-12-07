@@ -129,7 +129,7 @@ var upbeatPriceFeed = (callback) => {
     .then(res => res.json())
     .then(
         (result) => {
-            var average = result);
+            var average = result[0].eur);
             callback(average);
         },
         (error) => {
@@ -188,7 +188,7 @@ class Receiver extends React.Component {
         .then(res => res.json())
         .then(
             (result) => {
-                var average = result);
+                var average = result[0].eur);
                 var date = new Date();
                 this.setState({price: Math.round(average), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
             },
