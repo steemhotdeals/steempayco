@@ -125,7 +125,7 @@ class Sender extends React.Component {
 
 // Start reading metadata
 var upbeatPriceFeed = (callback) => {
-    fetch("https://api.coingecko.com/api/v3/simple/price?ids=steem&vs_currencies=EUR")
+    fetch("https://api.cryptonator.com/api/ticker/steem-eur")
     .then(res => res.json())
     .then(
         (result) => {
@@ -184,12 +184,12 @@ class Receiver extends React.Component {
     }
 
     upbeatPriceFeed() {
-        fetch("https://api.coingecko.com/api/v3/simple/price?ids=steem&vs_currencies=EUR")
+        fetch("https://api.cryptonator.com/api/ticker/steem-eur")
         .then(res => res.json())
         .then(
         (result) => {
-	 	console.log(result[1])
-            	callback(result[1]);
+	 	console.log(result[0])
+            	callback(result[0]);
                 var date = new Date();
                 this.setState({price: Math.round(average), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
             },
