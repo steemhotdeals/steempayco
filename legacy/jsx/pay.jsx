@@ -129,7 +129,8 @@ var upbeatPriceFeed = (callback) => {
     .then(res => res.json())
     .then(
         (result) => {
-            var average = result[0].steem.eur);
+	    console.log(result)
+            var average = 0);
             callback(average);
         },
         (error) => {
@@ -188,7 +189,8 @@ class Receiver extends React.Component {
         .then(res => res.json())
         .then(
             (result) => {
-                var average = result[0].steem.eur);
+		console.log(result)
+                var average = 0);
                 var date = new Date();
                 this.setState({price: Math.round(average), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
             },
