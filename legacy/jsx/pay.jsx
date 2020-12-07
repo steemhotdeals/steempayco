@@ -130,7 +130,7 @@ var upbeatPriceFeed = (callback) => {
     .then(
         (result) => {
 	    var average = result.ticker.price;
-	    console.log(result.ticker.price);
+	    console.log("1번 항목 : "+average);
             callback(average);
         },
         (error) => {
@@ -190,7 +190,7 @@ class Receiver extends React.Component {
         .then(
         (result) => {
 	        var average = result.ticker.price;
-	        console.log(result.ticker.price);
+	        console.log("2번항목 : "+average);
                 var date = new Date();
                 this.setState({price: Math.round(average), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
             },
