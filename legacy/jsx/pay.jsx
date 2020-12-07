@@ -126,7 +126,7 @@ class Sender extends React.Component {
 // Start reading metadata
 var upbeatPriceFeed = (callback) => {
     fetch("https://api.cryptonator.com/api/ticker/steem-eur")
-    .then(res => res.json())
+  //  .then(res => res.json())
     .then(
         (result) => {
 	    console.log(result[1])
@@ -185,7 +185,7 @@ class Receiver extends React.Component {
 
     upbeatPriceFeed() {
         fetch("https://api.cryptonator.com/api/ticker/steem-eur")
-        .then(res => res.json())
+//        .then(res => res.json())
         .then(
         (result) => {
 	 	console.log(result[0])
