@@ -66,7 +66,7 @@ class PayInfo extends React.Component {
                         <td className="pay-summary-right">1 STEEM = {this.props.metadata.rate} EUR</td>
                     </tr>
                     <tr>
-                        <td className="pay-summary-left">메시지</td>
+                        <td className="pay-summary-left">Message</td>
                         <td className="pay-summary-right">{this.props.metadata.message}</td>
                     </tr>
                 </tbody>
