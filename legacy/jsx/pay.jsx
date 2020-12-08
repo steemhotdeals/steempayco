@@ -192,7 +192,7 @@ class Receiver extends React.Component {
                 var date = new Date();		
 	        var average = result.ticker.price;
 	        console.log("2번항목 : "+average);
-		console.log("3번항목 " "+result.ticker.price);
+		console.log("3번항목 : "+result.ticker.price);
                 this.setState({price: Math.round(result.ticker.price), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
             },
             (error) => {
