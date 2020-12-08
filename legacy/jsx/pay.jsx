@@ -237,8 +237,6 @@ class Receiver extends React.Component {
                 </div>
                 {this.state.price && (
                 <div className="price-feed">Cryptonator Price: 1 STEEM = {this.state.price} EUR ({this.state.lastFeedUpdate})</div>
-		<script type="text/javascript">
-                crypt_single_base_currency = "Steem (STEEM)";crypt_single_target_currency = "Euro (EUR)";</script><script type="text/javascript" src="https://www.cryptonator.com/ui/js/widget/single_widget.js"></script>	
                 )}
                 <div className="input-group input-group-lg mb-2">
                     <div className="input-group-prepend">
