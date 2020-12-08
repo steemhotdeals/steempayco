@@ -55,7 +55,7 @@ class PayInfo extends React.Component {
                     <tr>
                         <td className="pay-summary-left">Price</td>
                         <td className="pay-summary-right">{this.props.metadata.amount} {this.props.metadata.currency}
-                            {this.props.metadata.currency == "KRW" && (
+                            {this.props.metadata.currency == "EUR" && (
                                 <span>
                             {"(" + (this.props.metadata.amount / this.props.metadata.rate).toFixed(3) + " STEEM)"}</span>
                             )}
@@ -63,7 +63,7 @@ class PayInfo extends React.Component {
                     </tr>
                     <tr>
                         <td className="pay-summary-left">Exchange Rate</td>
-                        <td className="pay-summary-right">1 STEEM = {this.props.metadata.rate} KRW</td>
+                        <td className="pay-summary-right">1 STEEM = {this.props.metadata.rate} EUR</td>
                     </tr>
                     <tr>
                         <td className="pay-summary-left">메시지</td>
@@ -86,8 +86,8 @@ class Sender extends React.Component {
     
     payViaSteemConnect() {
         var info = this.state.payInfo;
-        var amount = (info.currency === "KRW" ? (info.amount / info.rate) : info.amount).toFixed(3);
-        var message = "[SteemPay] " + info.message + (info.currency === "KRW" && ", " + info.amount + " KRW (Exchange Rate: " + info.rate + ") ");
+        var amount = (info.currency === "EUR" ? (info.amount / info.rate) : info.amount).toFixed(3);
+        var message = "[SteemPay] " + info.message + (info.currency === "EUR" && ", " + info.amount + " EUR (Exchange Rate: " + info.rate + ") ");
         console.log(message);
         
         if (steem_keychain) {
@@ -189,9 +189,9 @@ class Receiver extends React.Component {
         .then(res => res.json())
         .then(
         (result) => {
+                var date = new Date();		
 	        var average = result.ticker.price;
 	        console.log("2번항목 : "+average);
-                var date = new Date();
                 this.setState({price: Math.round(average), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
             },
             (error) => {
@@ -237,7 +237,7 @@ class Receiver extends React.Component {
                     Steem pay with keychain
                 </div>
                 {this.state.price && (
-                <div className="price-feed">Upbit 24 Hour Average Price: 1 STEEM = {this.state.price} KRW ({this.state.lastFeedUpdate})</div>
+                <div className="price-feed">Upbit 24 Hour Average Price: 1 STEEM = {this.state.price} EUR ({this.state.lastFeedUpdate})</div>
                 )}
                 <div className="input-group input-group-lg mb-2">
                     <div className="input-group-prepend">
@@ -258,7 +258,7 @@ class Receiver extends React.Component {
                         placeholder="Price"/>
                     <select className="custom-select form-control"
                         ref={(input) => { this.currency = input; }}>
-                        <option value='KRW'>원(Won)</option>
+                        <option value='EUR'>EURO</option>
                     </select>
                 </div>
                 <div className="input-group input-group-lg mb-2">
