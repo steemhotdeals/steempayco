@@ -190,7 +190,7 @@ class Receiver extends React.Component {
         (result) => {
                 var date = new Date();		
 	        var average = result.ticker.price;
-                this.setState({price: Math.round(average), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
+                this.setState({price: (average), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
             },
             (error) => {
                 alert("Critical Error! Please retry later." + error)
