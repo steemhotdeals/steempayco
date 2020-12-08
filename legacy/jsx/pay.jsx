@@ -236,7 +236,7 @@ class Receiver extends React.Component {
                     Steem pay with keychain
                 </div>
                 {this.state.price && (
-                <div className="price-feed">Upbit 24 Hour Average Price: 1 STEEM = {this.state.price} EUR ({this.state.lastFeedUpdate})</div>
+                <div className="price-feed">Cryptonator Price: 1 STEEM = {this.state.price} EUR ({this.state.lastFeedUpdate})</div>
                 )}
                 <div className="input-group input-group-lg mb-2">
                     <div className="input-group-prepend">
