@@ -130,7 +130,6 @@ var upbeatPriceFeed = (callback) => {
     .then(
         (result) => {
 	    var average = result.ticker.price;
-	    console.log("1번 항목 : "+average);
             callback(average);
         },
         (error) => {
@@ -191,12 +190,11 @@ class Receiver extends React.Component {
         (result) => {
                 var date = new Date();		
 	        var average = result.ticker.price;
-	        console.log("2번항목 : "+average);
-		console.log("3번항목 : "+result.ticker.price);
-                this.setState({price: Math.round(result.ticker.price), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
+                this.setState({price: Math.round(average), lastFeedUpdate: date.toLocaleDateString() + " " + date.toLocaleTimeString()});
             },
             (error) => {
                 alert("Critical Error! Please retry later." + error)
+		console.log(error);
             })
         .catch((error) => {
             alert("Critical Error! Please retry later." + error)
